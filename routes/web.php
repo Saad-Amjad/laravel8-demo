@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FooController;
 use App\Http\Controllers\BarController;
-use Illuminate\Support\Facades\Event;
-use App\Events\FooEvent;
+use App\Exceptions\FooException;
 
 /*
 |--------------------------------------------------------------------------
@@ -57,4 +56,8 @@ Route::middleware(['throttle:foo'])->get('/foo/limit', function (Request $reques
 });
 Route::middleware(['throttle:bar'])->get('/bar/limit', function (Request $request) {
     return 'Bar Limit';
+});
+
+Route::get('/foo/custom', function () {
+    throw new FooException();
 });
