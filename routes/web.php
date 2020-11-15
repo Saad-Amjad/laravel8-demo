@@ -27,5 +27,9 @@ Route::get('/foo', [FooController::class, 'index']);
 // now
 Route::get('/bar', BarController::class);
 
+// showcase route cache php artisan route:cache
+Route::get('/cache', function () {
+    return 'cache';
+});
 
 
