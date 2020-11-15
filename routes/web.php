@@ -5,6 +5,7 @@ use App\Http\Controllers\FooController;
 use App\Http\Controllers\BarController;
 use Illuminate\Support\Facades\Event;
 use App\Events\FooEvent;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,3 +41,6 @@ Route::get('/buttons', function () {
 
 // register events
 Route::get('/foo/events', [FooController::class, 'event']);
+
+// catch queue
+Route::get('/foo/queue', [FooController::class, 'queue']);

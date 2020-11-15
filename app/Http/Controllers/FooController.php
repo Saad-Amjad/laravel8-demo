@@ -34,4 +34,17 @@ class FooController extends Controller
 
         return 'FooEvent Dispatched';
     }
+
+    public function queue()
+    {
+        // showcase queue catch error
+
+        dispatch(function () {
+            throw new \Exception('Encountered an error');
+        })->catch(function (\Throwable $e) {
+            info('Caught exception');
+        });
+
+        return;
+    }
 }
