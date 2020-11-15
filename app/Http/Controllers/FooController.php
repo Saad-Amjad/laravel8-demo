@@ -73,4 +73,10 @@ class FooController extends Controller
 
         return 'FooBatchJob Dispatched';
     }
+
+    public function showBatch(string $id)
+    {
+        return Bus::findBatch($id);
+    }
+
 }

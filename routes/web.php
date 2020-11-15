@@ -47,3 +47,6 @@ Route::get('/foo/queue', [FooController::class, 'queue']);
 
 // job batching
 Route::get('/foo/batch', [FooController::class, 'batch']);
+
+// find batch id
+Route::get('/foo/batch/{id}', [FooController::class, 'showBatch']);
