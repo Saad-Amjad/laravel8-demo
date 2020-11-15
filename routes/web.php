@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FooController;
+use App\Http\Controllers\BarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -22,5 +23,9 @@ Route::get('/', function () {
 
 // now
 Route::get('/foo', [FooController::class, 'index']);
+
+// now
+Route::get('/bar', BarController::class);
+
 
 
