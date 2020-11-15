@@ -32,6 +32,19 @@ class Handler extends ExceptionHandler
      */
     public function register()
     {
-        //
+          // earlier
+//        if($e instanceof SomeException) {
+//            // do something
+//        }
+
+          // now either report
+//        $this->reportable(function (FooException $e) {
+//            info('Foo Exception Error is caught');
+//        });
+
+        // or render
+        $this->renderable(function (FooException $e) {
+            return response('Foo Exception Error!');
+        });
     }
 }
