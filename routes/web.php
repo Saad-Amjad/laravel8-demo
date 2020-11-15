@@ -39,4 +39,4 @@ Route::get('/buttons', function () {
 });
 
 // register events
-Route::get('/foo/event', [FooController::class, 'event']);
+Route::get('/foo/events', [FooController::class, 'event']);
