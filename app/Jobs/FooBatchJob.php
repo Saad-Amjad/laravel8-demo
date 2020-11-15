@@ -2,15 +2,16 @@
 
 namespace App\Jobs;
 
+use Illuminate\Bus\Batchable;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
-class FooJob implements ShouldQueue
+class FooBatchJob implements ShouldQueue
 {
-    use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
+    use Batchable, Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     /**
      * Create a new job instance.
@@ -29,19 +30,6 @@ class FooJob implements ShouldQueue
      */
     public function handle()
     {
-        info("FooJob Processing");
-        throw new \Exception('Encountered an error');
+        info("FooBatchJob Processing");
     }
-
-    /**
-     * Calculate the number of seconds to wait before retrying the job.
-     *
-     * @return array
-     */
-    public function backoff()
-    {
-        return [1, 3, 5];
-    }
-
-
 }

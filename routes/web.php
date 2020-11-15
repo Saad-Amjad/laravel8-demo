@@ -42,5 +42,8 @@ Route::get('/buttons', function () {
 // register events
 Route::get('/foo/events', [FooController::class, 'event']);
 
-// catch queue
+// catch queue and backoff job showcase
 Route::get('/foo/queue', [FooController::class, 'queue']);
+
+// job batching
+Route::get('/foo/batch', [FooController::class, 'batch']);

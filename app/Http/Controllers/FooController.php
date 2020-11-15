@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Events\FooEvent;
+use App\Jobs\FooBatchJob;
 use App\Jobs\FooJob;
 use App\Models\Foo;
+use Illuminate\Bus\Batch;
+use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Event;
 
 class FooController extends Controller
@@ -50,5 +53,24 @@ class FooController extends Controller
         // FooJob::dispatch();
 
         return 'FooJob Dispatched';
+    }
+
+    public function batch()
+    {
+        Bus::batch([
+            new FooBatchJob(),
+            new FooBatchJob(),
+            new FooBatchJob(),
+            new FooBatchJob(),
+            new FooBatchJob(),
+        ])->then(function (Batch $batch) {
+            info('Done');
+        })->catch(function (Batch $batch, Throwable $e) {
+            info('Failed');
+        })->finally(function (Batch $batch) {
+            info('Batch is finishing');
+        })->dispatch();
+
+        return 'FooBatchJob Dispatched';
     }
 }
