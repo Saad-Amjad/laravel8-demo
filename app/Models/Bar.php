@@ -5,11 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Foo extends Model
+class Bar extends Model
 {
     use HasFactory;
 
-    protected $table = 'foo';
+    protected $table = 'bar';
 
     /**
      * The attributes that are mass assignable.
@@ -19,12 +19,11 @@ class Foo extends Model
     protected $fillable = [
         'name',
     ];
-
     /**
-     * Get the Bar record associated with Foo.
+     * Get the Food that owns the Bar.
      */
-    public function bar()
+    public function foo()
     {
-        return $this->hasOne('App\Models\Bar');
+        return $this->belongsTo('App\Models\Foo');
     }
 }
