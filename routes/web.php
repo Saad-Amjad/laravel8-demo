@@ -50,3 +50,11 @@ Route::get('/foo/batch', [FooController::class, 'batch']);
 
 // find batch id
 Route::get('/foo/batch/{id}', [FooController::class, 'showBatch']);
+
+// showcase rate limiting
+Route::middleware(['throttle:foo'])->get('/foo/limit', function (Request $request) {
+    return 'Foo Limit';
+});
+Route::middleware(['throttle:bar'])->get('/bar/limit', function (Request $request) {
+    return 'Bar Limit';
+});
