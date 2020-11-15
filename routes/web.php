@@ -27,9 +27,16 @@ Route::get('/foo', [FooController::class, 'index']);
 // now
 Route::get('/bar', BarController::class);
 
-// showcase route cache php artisan route:cache
+// route cache php artisan route:cache
 Route::get('/cache', function () {
     return 'cache';
+});
+
+
+// showcase component extensions
+// php artisan make:component ParentButton
+Route::get('/buttons', function () {
+    return view('buttons-example');
 });
 
 
